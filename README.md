@@ -2,7 +2,7 @@
 
 ### FESB, smjer 110/111/112/114/120, akademska godina 2016/2017
 
-Low-level programiranje za ugradbene sustave je sasvim drugačije od programiranja za uređaje opće namjene, kao što su računala i mobiteli. Učinkovitost (u smislu brzine i prostora) je daleko važnije, jer su resursi na visokoj cijeni. Drugim rječima veoma bitan naglasak se stavlja na **optimiziaciju** djelova koda.
+Low-level programiranje za ugradbene sustave je sasvim drugačije od programiranja za uređaje opće namjene, kao što su računala i mobiteli. Učinkovitost (u smislu brzine i prostora) je daleko važnije, jer su resursi na visokoj cijeni. Drugim rječima veoma bitan naglasak se stavlja na **optimiziaciju** dijelova koda.
 
 ## Mikrokontroleri
 
@@ -41,11 +41,11 @@ Jedan od načina dijagnoze problema memorije je detekcija zauzeća memorije.
 
 ### Flash memorija
 
-Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije tako da već unaprijed možete znati je li kod prevelik za ``upload`` na Arduino
+Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije tako da već unaprijed možete znati je li kod prevelik za ``upload`` na Arduino.
 
 ### SRAM memorija
 
-Korištenje SRAM memorije je dinamičnije i stoga ju je (malo) teže mjeriti. ``free_ram ()`` funkcija dana u nastavku je jedan od načina na koji možete to ralizirati. Korištenje SRAM-a je dinamično s vremenom će se mijenjati. Dakle, važno je zvati ``free_ram ()`` u različitim vremenima i iz različitih mjesta u vašem kodu da biste vidjeli kako se mijenja tijekom vremena izvršavanja koda.
+Korištenje SRAM memorije je dinamičnije i stoga ju je (malo) teže mjeriti. ``free_ram ()`` funkcija dana u nastavku je jedan od načina na koji možete to ralizirati. Korištenje SRAM-a je dinamično i s vremenom će se mijenjati. Dakle, važno je zvati ``free_ram ()`` u različitim vremenima i iz različitih djelova vašeg koda da biste vidjeli kako se mijenja tijekom vremena izvršavanja koda.
 
 ```arduino
 int freeRam () 
@@ -56,11 +56,11 @@ int freeRam ()
 }
 ```
 
-U osnovi, funkcija ``free_ram ()`` je zapravo daje informaciju o slobodnom prostoru između Stack-a i Heap-a. Upravo taj prostor zaista treba pratiti ako pokušavate izbjeći rušenje programa.
+U osnovi, funkcija ``free_ram ()`` zapravo daje informaciju o slobodnom prostoru između Stack-a i Heap-a. Upravo taj prostor zaista treba pratiti ako pokušavate izbjeći rušenje programa.
 
 ## Optimizacija memorije Arduino programa
 
-Kada sastaviti svoj program, IDE će vam reći koliko je velik. Ako ste dosegli ili prešli raspoloživi prostor, primjena nekih optimizacijskih mehanizama ga može vratiti u granice.
+Prilikom kompajliranja svog programa, sam IDE će vam reći koliko je velik (npr. PlatformIO). Ako ste dosegli ili prešli raspoloživi prostor, primjena nekih optimizacijskih mehanizama ga može vratiti unutar granica.
 
 ### Uklonite nepotrebne (mrtve) dijelove koda
 
@@ -74,6 +74,8 @@ Može se dogoditi da je rezultirajući kod nastao kao kombinacija koda iz više 
 
 Postoje razni načini na koji možete smanjiti korištenje SRAM memorije. Ovo su samo neki od njih.
 ### Eliminirajte nekorištenje varijable
+
+Može se ponekad dogoditi da se neke varijable uopće ne koriste pa ih jednostavno izbrišite.
 
 ### Smanjite nepotrebnu veličinu varijabli
 
@@ -90,7 +92,7 @@ Ovi se podaci koriste u funkciji te se prilikom izlaska iz funkcije dio memorije
 
 ### Upotreba PROGMEM za const podatke
 
-U mnogim slučajevima, velika količina RAM-a je preuzeta od strane statičke memorije kao rezultat korištenja globalne varijable (kao što su *Strings* ili *Int*). Kad znate da se vrlo vjerojatno varijabla neće promijeniti, ona se jednostavno može pohraniti u tzv. PROGMEM (programsku memoriju). Kao jednostavan primjer je upotreba ``F()`` makro-a koji kaže kompajleru da se String pohrani u PROGMEM-u. 
+U mnogim slučajevima, velika količina RAM-a je preuzeta od strane statičke memorije kao rezultat korištenja globalne varijable (kao što su *Strings* ili *Int*). Kada znate da se vrlo vjerojatno varijabla neće promijeniti, ona se jednostavno može pohraniti u tzv. PROGMEM (programsku memoriju). Kao jednostavan primjer je upotreba ``F()`` makro-a koji kaže kompajleru da se String pohrani u PROGMEM-u. 
 
 Npr. ako zamijenite:
 
@@ -180,7 +182,9 @@ Da biste to realizirali, otvorite novi terminal u PlatformIO-u te upišite sljed
 Nakon toga će vam se prikazati popis biblioteka koje možete instalirati. Instalirajte biblioteku pod rednim brojem ``[19]`` tako da ćete utipkati:
 ``platformio lib -g install 19``
 Sličnu stvar ponovite i za senzor BH1750
+
 ``platformio lib search BH1750``
+
 ``platformio lib -g install 439``
 
 Nakon toga povežite DHT i BH1750 senzore kako je prikazano na slici te testirajte navedeni kod
