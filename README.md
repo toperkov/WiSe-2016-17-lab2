@@ -80,3 +80,94 @@ Postoje razni načini na koji možete smanjiti korištenje SRAM memorije. Ovo su
 
 Ne koristite *float* kada je *int* dovoljan. Nemojte koristiti *int* kada je *byte* dovoljan. Pokušajte koristiti najmanji tip podataka koji može pohraniti informaciju.
 
+![learn_arduino_datatypes](https://cloud.githubusercontent.com/assets/8695815/23830238/5eeaa534-0706-11e7-9eae-bfd397b6aed7.jpg)
+
+### Upotreba lokalnih varijabli
+
+Globalne i statičke varijable se prve učitaju u SRAM te one guraju Heap gore prema Stacku. Ukoliko je moguće, incijaliziraje lokalne varijable unutar funkcija. Naime, prilikom izvršavanja funkcije alocira se dio Stack memorije. Unutar te memorije će biti sadržani:
+ - svi parametri koji su dodijeljeni funkciji
+ - sve lokalne varijable koje su deklarirane u funkciji
+Ovi se podaci koriste u funkciji te se prilikom izlaska iz funkcije dio memorije Stacka kojeg je funkcija koristila u potpunosti oslobađa!
+
+### Upotreba PROGMEM za const podatke
+
+U mnogim slučajevima, velika količina RAM-a je preuzeta od strane statičke memorije kao rezultat korištenja globalne varijable (kao što su *Strings* ili *Int*). Kad znate da se vrlo vjerojatno varijabla neće promijeniti, ona se jednostavno može pohraniti u tzv. PROGMEM (programsku memoriju). Kao jednostavan primjer je upotreba ``F()`` makro-a koji kaže kompajleru da se String pohrani u PROGMEM-u. 
+
+Npr. ako zamijenite:
+
+```arduino
+Serial.println("Sram sram sram sram. Lovely sram! Wonderful sram! Sram sra-a-a-a-a-am sram sra-a-a-a-a-am sram. Lovely sram! Lovely sram! Lovely sram! Lovely sram! Lovely sram! Sram sram sram sram!");
+```
+
+sa 
+
+```arduino
+Serial.println(F("Sram sram sram sram. Lovely sram! Wonderful sram! Sram sra-a-a-a-a-am sram sra-a-a-a-a-am sram. Lovely sram! Lovely sram! Lovely sram! Lovely sram! Lovely sram! Sram sram sram sram!"));
+```
+
+sačuvat ćete 180 byte-ova SRAM memorije.
+
+### Ne koristite rekurzivne funkcije
+
+Na sljedećem primjeru ćete moći vidjeti jednostavno kako možete korištenjem rekurzivne funkcije napuniti Stack memoriju. Što mislite bi se trebalo dogoditi?
+
+```arduino
+// Pin 13 has an LED connected on most Arduino boards.
+// give it a name:
+int led = 13;
+uint16_t a = 2;
+
+#define DELAY 20 // wait for a predefined delay (in mililseconds)
+
+void powerUp();
+void powerDown();
+int freeRam();
+void incVar();
+
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  // initialize the digital pin as an output.
+  pinMode(led, OUTPUT);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  powerUp();
+}
+
+void powerUp() {
+  Serial.print("Free SRAM: ");
+  Serial.print(freeRam());
+  Serial.println(" bytes");
+  incVar();
+  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(DELAY);
+  powerDown();
+};
+
+void powerDown() {
+  Serial.print("Free SRAM: ");
+  Serial.print(freeRam());
+  Serial.print(" bytes");
+  incVar();
+  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+  delay(DELAY);
+  powerUp();
+
+};
+
+int freeRam ()
+{
+  extern int __heap_start, *__brkval;
+  int v;
+  return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval);
+}
+
+void incVar() {
+  a = a + 2;
+  Serial.print("a + 2 = ");
+  Serial.println(a);
+};
+```
