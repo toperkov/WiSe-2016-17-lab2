@@ -181,10 +181,8 @@ Da biste to realizirali, otvorite novi terminal u PlatformIO-u te upišite sljed
 ``platformio lib search DHT``
 Nakon toga će vam se prikazati popis biblioteka koje možete instalirati. Instalirajte biblioteku pod rednim brojem ``[19]`` tako da ćete utipkati:
 ``platformio lib -g install 19``
-Sličnu stvar ponovite i za senzor BH1750
-
-``platformio lib search BH1750``
-
+Sličnu stvar ponovite i za senzor BH1750  
+``platformio lib search BH1750``  
 ``platformio lib -g install 439``
 
 Nakon toga povežite DHT i BH1750 senzore kako je prikazano na slici te testirajte navedeni kod
