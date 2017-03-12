@@ -174,7 +174,7 @@ void incVar() {
 
 # Zadatak
 
-Skinite ``TempHumLight.ino`` datoteku koja se nalazi na GitHub repozitoriju te je stavite u ``scr`` direktorij u kojemu ćete raditi današnju vježbu (npr. ``C:\Users\Student\Desktop\Bubli\scr``). Kao što ćete vidjeti, navedena skripta se čita temperaturu i vlagu senzora (DHT11 ili DHT22) te razinu osvjetljenja (pomoću senzora BH1750). Pije pokretanja/kompajliranja skripte potrebno je instalirati biblioteke za senzor DHT i BH1750.
+Skinite ``TempHumLight.ino`` datoteku koja se nalazi na GitHub repozitoriju te je stavite u ``scr`` direktorij u kojemu ćete raditi današnju vježbu (npr. ``C:\Users\Student\Desktop\Bubli\scr``). Kao što ćete vidjeti, navedena skripta čita temperaturu i vlagu senzora (DHT11 ili DHT22) te razinu osvjetljenja (pomoću senzora BH1750). Pije pokretanja/kompajliranja skripte potrebno je instalirati biblioteke za senzor DHT i BH1750.
 
 Da biste to realizirali, otvorite novi terminal u PlatformIO-u te upišite sljedeću naredbu:
 ``platformio lib search DHT``
@@ -188,4 +188,4 @@ Nakon toga povežite DHT i BH1750 senzore kako je prikazano na slici te testiraj
 
 
 
-Vaš zadatak je da razumijete kod te ga optimizirate.
+Vaš zadatak je da razumijete kod te ga optimizirate na način da zauzima što manje SRAM-a korištenjem gore navedenih uputa.
