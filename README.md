@@ -58,3 +58,25 @@ int freeRam ()
 ```
 
 U osnovi, funkcija ``free_ram ()`` je zapravo daje informaciju o slobodnom prostoru između Stack-a i Heap-a. Upravo taj prostor zaista treba pratiti ako pokušavate izbjeći rušenje programa.
+
+## Optimizacija memorije Arduino programa
+
+Kada sastaviti svoj program, IDE će vam reći koliko je velik. Ako ste dosegli ili prešli raspoloživi prostor, primjena nekih optimizacijskih mehanizama ga može vratiti u granice.
+
+### Uklonite nepotrebne (mrtve) dijelove koda
+
+Može se dogoditi da je rezultirajući kod nastao kao kombinacija koda iz više izvora, pa se lako može dogoditi da su dijelovi koda nekorišteni te ih se može ukloniti:
+ - Nekorištene biblioteke
+ - Nekorištene funkcije
+ - Nekorištene varijable
+ - Nedostupni dijelovi koda
+ 
+## Optimizacija SRAM-a
+
+Postoje razni načini na koji možete smanjiti korištenje SRAM memorije. Ovo su samo neki od njih.
+### Eliminirajte nekorištenje varijable
+
+### Smanjite nepotrebnu veličinu varijabli
+
+Ne koristite *float* kada je *int* dovoljan. Nemojte koristiti *int* kada je *byte* dovoljan. Pokušajte koristiti najmanji tip podataka koji može pohraniti informaciju.
+
