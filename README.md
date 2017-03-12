@@ -109,7 +109,7 @@ sačuvat ćete 180 byte-ova SRAM memorije.
 
 ### Ne koristite rekurzivne funkcije
 
-Na sljedećem primjeru ćete moći vidjeti jednostavno kako možete korištenjem rekurzivne funkcije napuniti Stack memoriju. Što mislite bi se trebalo dogoditi?
+Na sljedećem primjeru ćete moći vidjeti jednostavno kako možete korištenjem rekurzivne funkcije napuniti Stack memoriju. Što mislite bi se trebalo dogoditi? *Vaš zadatak je da korištenjem PlatformIO-a testirate navedenu skriptu i komentirate što se dogodilo.*
 
 ```arduino
 // Pin 13 has an LED connected on most Arduino boards.
@@ -171,3 +171,21 @@ void incVar() {
   Serial.println(a);
 };
 ```
+
+# Zadatak
+
+Skinite ``TempHumLight.ino`` datoteku koja se nalazi na GitHub repozitoriju te je stavite u ``scr`` direktorij u kojemu ćete raditi današnju vježbu (npr. ``C:\Users\Student\Desktop\Bubli\scr``). Kao što ćete vidjeti, navedena skripta se čita temperaturu i vlagu senzora (DHT11 ili DHT22) te razinu osvjetljenja (pomoću senzora BH1750). Pije pokretanja/kompajliranja skripte potrebno je instalirati biblioteke za senzor DHT i BH1750.
+
+Da biste to realizirali, otvorite novi terminal u PlatformIO-u te upišite sljedeću naredbu:
+``platformio lib search DHT``
+Nakon toga će vam se prikazati popis biblioteka koje možete instalirati. Instalirajte biblioteku pod rednim brojem ``[19]`` tako da ćete utipkati:
+``platformio lib -g install 19``
+Sličnu stvar ponovite i za senzor BH1750
+``platformio lib search BH1750``
+``platformio lib -g install 439``
+
+Nakon toga povežite DHT i BH1750 senzore kako je prikazano na slici te testirajte navedeni kod
+
+
+
+Vaš zadatak je da razumijete kod te ga optimizirate.
