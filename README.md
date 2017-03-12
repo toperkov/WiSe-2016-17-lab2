@@ -48,3 +48,13 @@ Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije.
 
 Korištenje SRAM memorije je dinamičnije i stoga ju je (malo) teže mjeriti. ``free_ram ()`` funkcija dana u nastavku je jedan od načina na koji možete to ralizirati. Korištenje SRAM-a je dinamično s vremenom će se mijenjati. Dakle, važno je zvati ``free_ram ()`` u različitim vremenima i iz različitih mjesta u vašem kodu da biste vidjeli kako se mijenja tijekom vremena izvršavanja koda.
 
+```arduino
+int freeRam () 
+{
+  extern int __heap_start, *__brkval; 
+  int v; 
+  return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval); 
+}
+```
+
+U osnovi, funkcija ``free_ram ()`` je zapravo daje informaciju o slobodnom prostoru između Stack-a i Heap-a. Upravo taj prostor zaista treba pratiti ako pokušavate izbjeći rušenje programa.
