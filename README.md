@@ -2,7 +2,7 @@
 
 ### FESB, smjer 110/111/112/114/120, akademska godina 2016/2017
 
-Low-level programiranje za ugradbene sustave je sasvim drugačije od programiranja za uređaje opće namjene, kao što su računala i mobiteli. Učinkovitost (u smislu brzine i prostora) je daleko važnije, jer su resursi na visokoj cijeni. Drugim rječima veoma bitan naglasak se stavlja na **optimiziaciju** dijelova koda.
+Low-level programiranje za ugradbene sustave je sasvim drugačije od programiranja za uređaje opće namjene, kao što su računala i mobiteli. Učinkovitost (u smislu brzine i prostora) je daleko važnije, jer su resursi na visokoj cijeni. Drugim rječima veoma bitan naglasak se stavlja na **optimiziaciju** djelova koda.
 
 ## Mikrokontroleri
 
@@ -27,11 +27,11 @@ Memorija Arduina se sastoji od tri dijela:
 SRAM ili *Static Random Access Memory* je tip memorije u koji se može čitati i pisati prilikom izvršavanja programa. SRAM memorija ima višestruku ulogu prilikom izvršavanja programa:
  - **Statički Podaci** - Ovaj blok memorije SRAM-a je rezerviran prostor za sve globalne i statičke varijable iz svog programa.
  - **Heap** - koristi se za dinamički alocirane dijelove podatke kao što su ``malloc``
- - **Stack** - upotrebljava se za lokalne varijable i za održavanje evidencije prekida (*interrupts*) i poziva funkcija. *Stack* raste od vrha memorije dolje prema dnu (prema *Heap-u*). Svaki interrupt, poziv funkcije i/ili lokalna varijabla raspodjela uzrokuje rasti Stack-a. Po povratku iz interrupta ili poziva funkcije će zauzeti dio memorije koji upotrebljava taj interrupt ili funkciju se oslobađa.
+ - **Stack** - upotrebljava se za lokalne varijable i za održavanje evidencije prekida (*interrupts*) i poziva funkcija. *Stack* raste od vrha memorije dolje prema dnu (prema *Heap-u*). Svaki interrupt, poziv funkcije i/ili lokalna varijabla uzrokuje rast Stack-a. Po povratku iz interrupta ili poziva funkcije oslobodit će se dio memorije koji taj interrupt ili funkcija upotrebljava.
 
 ## Usporedba Arduino memorije
 
-U sljedežoj tablici možete vidjeti kapacitete memorije za nekoliko popularnih Arduino i Arduino kompatibilnih uređaja.
+U sljedećoj tablici možete vidjeti kapacitete memorije za nekoliko popularnih Arduino i Arduino kompatibilnih uređaja.
 
 ![learn_arduino_arduinochart](https://cloud.githubusercontent.com/assets/8695815/23830043/2fd4be2e-0701-11e7-875f-32ff3a364fd2.jpg)
 
