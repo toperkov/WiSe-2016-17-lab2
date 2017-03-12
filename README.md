@@ -19,8 +19,9 @@ Memorija Arduina se sastoji od tri dijela:
  - SRAM
  - EEPROM
 
-![learn_arduino_stack_operation](https://cloud.githubusercontent.com/assets/8695815/23830029/cf1517aa-0700-11e7-8b63-5432481523f4.gif)
-
+<!---![learn_arduino_stack_operation](https://cloud.githubusercontent.com/assets/8695815/23830029/cf1517aa-0700-11e7-8b63-5432481523f4.gif)
+-->
+<img src="https://cloud.githubusercontent.com/assets/8695815/23830029/cf1517aa-0700-11e7-8b63-5432481523f4.gif" width="600px" height="600px" />
 ## SRAM
 
 SRAM ili *Static Random Access Memory* je tip memorije u koji se može čitati i pisati prilikom izvršavanja programa. SRAM memorija ima višestruku ulogu prilikom izvršavanja programa:
