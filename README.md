@@ -40,9 +40,7 @@ Jedan od načina dijagnoze problema memorije je detekcija zauzeća memorije.
 
 ### Flash memorija
 
-Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije.
-
-----DODAJ SLIKU FLASHA---
+Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije tako da već unaprijed možete znati je li kod prevelik za ``upload`` na Arduino
 
 ### SRAM memorija
 
