@@ -184,6 +184,6 @@ Sličnu stvar ponovite i za senzor BH1750
 
 Nakon toga povežite DHT i BH1750 senzore kako je prikazano na slici te testirajte navedeni kod
 
-![dht11bh1750_bb](https://cloud.githubusercontent.com/assets/8695815/23832209/8d2b52d4-0730-11e7-8dfc-4aa61bff21b7.png =250x)
+![dht11bh1750_bb](https://cloud.githubusercontent.com/assets/8695815/23832209/8d2b52d4-0730-11e7-8dfc-4aa61bff21b7.png)
 
 *Vaš zadatak je da razumijete kod te ga optimizirate na način da zauzima što manje SRAM-a korištenjem gore navedenih uputa.*
