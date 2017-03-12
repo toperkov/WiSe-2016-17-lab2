@@ -28,4 +28,23 @@ SRAM ili *Static Random Access Memory* je tip memorije u koji se može čitati i
  - **Heap** - koristi se za dinamički alocirane dijelove podatke kao što su ``malloc``
  - **Stack** - upotrebljava se za lokalne varijable i za održavanje evidencije prekida (*interrupts*) i poziva funkcija. *Stack* raste od vrha memorije dolje prema dnu (prema *Heap-u*). Svaki interrupt, poziv funkcije i/ili lokalna varijabla raspodjela uzrokuje rasti Stack-a. Po povratku iz interrupta ili poziva funkcije će zauzeti dio memorije koji upotrebljava taj interrupt ili funkciju se oslobađa.
 
+## Usporedba Arduino memorije
+
+U sljedežoj tablici možete vidjeti kapacitete memorije za nekoliko popularnih Arduino i Arduino kompatibilnih uređaja.
+
+![learn_arduino_arduinochart](https://cloud.githubusercontent.com/assets/8695815/23830043/2fd4be2e-0701-11e7-875f-32ff3a364fd2.jpg)
+
+## Mjerenje memorije Arduina
+
+Jedan od načina dijagnoze problema memorije je detekcija zauzeća memorije.
+
+### Flash memorija
+
+Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije.
+
+----DODAJ SLIKU FLASHA---
+
+### SRAM memorija
+
+Korištenje SRAM memorije je dinamičnije i stoga ju je (malo) teže mjeriti. ``free_ram ()`` funkcija dana u nastavku je jedan od načina na koji možete to ralizirati. Korištenje SRAM-a je dinamično s vremenom će se mijenjati. Dakle, važno je zvati ``free_ram ()`` u različitim vremenima i iz različitih mjesta u vašem kodu da biste vidjeli kako se mijenja tijekom vremena izvršavanja koda.
 
