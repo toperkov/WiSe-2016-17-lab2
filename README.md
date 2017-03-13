@@ -88,6 +88,7 @@ Ne koristite *float* kada je *int* dovoljan. Nemojte koristiti *int* kada je *by
 Globalne i statičke varijable se prve učitaju u SRAM te one guraju Heap gore prema Stacku. Ukoliko je moguće, incijalizirajte lokalne varijable unutar funkcija. Naime, prilikom izvršavanja funkcije alocira se dio Stack memorije. Unutar te memorije će biti sadržani:
  - svi parametri koji su dodijeljeni funkciji,
  - sve lokalne varijable koje su deklarirane u funkciji.  
+
 Ovi se podaci koriste u funkciji te se prilikom izlaska iz funkcije dio memorije Stacka kojeg je funkcija koristila u potpunosti oslobađa!
 
 ### Upotreba PROGMEM za const podatke
@@ -118,7 +119,7 @@ Na sljedećem primjeru ćete moći vidjeti jednostavno kako možete korištenjem
 int led = 13;
 uint16_t a = 2;
 
-#define DELAY 20 // wait for a predefined delay (in mililseconds)
+#define DELAY 1000 // wait for a predefined delay (in milliseconds)
 
 void powerUp();
 void powerDown();
