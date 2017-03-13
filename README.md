@@ -181,8 +181,8 @@ Skinite ``TempHumLight.ino`` datoteku koja se nalazi na GitHub repozitoriju te j
 Da biste to realizirali, otvorite novi terminal u PlatformIO-u te upišite sljedeću naredbu:
 ``platformio lib search DHT``
 Nakon toga će vam se prikazati popis biblioteka koje možete instalirati. Instalirajte biblioteku pod rednim brojem ``[19]`` tako da ćete utipkati:  
-``platformio lib -g install 19`` (pod brojem 19 je Adafruit biblioteka za DHT senzor)
-Sličnu stvar ponovite i za senzor BH1750  
+``platformio lib -g install 19`` (pod brojem 19 je Adafruit biblioteka za DHT senzor)  
+Sličnu stvar ponovite i za senzor BH1750:  
 ``platformio lib search BH1750``  
 ``platformio lib -g install 439`` (redni broj biblioteke za senzor BH1750)
 
