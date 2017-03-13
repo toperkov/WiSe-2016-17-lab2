@@ -2,7 +2,7 @@
 
 ### FESB, smjer 110/111/112/114/120, akademska godina 2016/2017
 
-Low-level programiranje za ugradbene sustave je sasvim drugačije od programiranja za uređaje opće namjene, kao što su računala i mobiteli. Učinkovitost (u smislu brzine i prostora) je daleko važnije, jer su resursi na visokoj cijeni. Drugim rječima veoma bitan naglasak se stavlja na **optimiziaciju** dijelova koda.
+Low-level programiranje za ugradbene sustave je sasvim drugačije od programiranja za uređaje opće namjene, kao što su računala i mobiteli. Učinkovitost (u smislu brzine i prostora) je daleko važnije, jer su resursi na visokoj cijeni. Drugim rječima, veoma bitan naglasak se stavlja na **optimiziaciju** dijelova koda.
 
 ## Mikrokontroleri
 
@@ -10,7 +10,7 @@ Mikrokontroleri poput onih koji pokreću Arduino su dizajnirani za ugradbene apl
 
 Najveća razlika između mikrokontrolera kojeg koristite na vašim vježbama i računala opće namjene je količina dostupne memorije. Arduino UNO ima samo 32KB flash memorije i 2KB SRAM-a što je otprilike **100.000 puta** manje od fizičke memorije od PC-a! (ne uključujući memoriju vanjskog diska)
 
-Ponekad se može dogoditi da Arduino bez ikakvih razloga "poludi" ili se resetira sam po sebi, iako je kod 100% točan. U takvim slučajevima, jedan od mogućih uzroka je nedostatak slobodnog RAM (*Random Access Memory*). Drugim riječima, vaš MCU nema dovoljno slobodnog RAM-a za obavljanje traženog zadatka.
+Ponekad se može dogoditi da Arduino bez ikakvih razloga "poludi" ili se resetira sam po sebi, iako je kod 100% točan. U takvim slučajevima, jedan od mogućih uzroka je nedostatak slobodnog RAM (*Random Access Memory*). Drugim riječima, vaš mikrokontroler nema dovoljno slobodnog RAM-a za obavljanje traženog zadatka.
 
 ## Memorija Arduino mikrokontrolera
 
@@ -26,7 +26,7 @@ Memorija Arduina se sastoji od tri dijela:
 
 SRAM ili *Static Random Access Memory* je tip memorije u koji se može čitati i pisati prilikom izvršavanja programa. SRAM memorija ima višestruku ulogu prilikom izvršavanja programa:
  - **Statički Podaci** - Ovaj blok memorije SRAM-a je rezerviran prostor za sve globalne i statičke varijable iz svog programa.
- - **Heap** - koristi se za dinamički alocirane dijelove podatke kao što su ``malloc``
+ - **Heap** - koristi se za dinamički alocirane podatke kao što su ``malloc``.
  - **Stack** - upotrebljava se za lokalne varijable i za održavanje evidencije prekida (*interrupts*) i poziva funkcija. *Stack* raste od vrha memorije dolje prema dnu (prema *Heap-u*). Svaki interrupt, poziv funkcije i/ili lokalna varijabla uzrokuje rast Stack-a. Po povratku iz interrupta ili poziva funkcije oslobodit će se dio memorije koji taj interrupt ili funkcija upotrebljava.
 
 ## Usporedba Arduino memorije
@@ -41,7 +41,7 @@ Jedan od načina dijagnoze problema memorije je detekcija zauzeća memorije.
 
 ### Flash memorija
 
-Kompajler prilikom kompajliranja koda za Vas izračuna zauzeće flash memorije tako da već unaprijed možete znati je li kod prevelik za ``upload`` na Arduino.
+Kompajler prilikom kompajliranja koda za vas izračuna zauzeće flash memorije tako da već unaprijed možete znati je li kod prevelik za ``upload`` na Arduino.
 
 ### SRAM memorija
 
@@ -60,7 +60,7 @@ U osnovi, funkcija ``free_ram ()`` zapravo daje informaciju o slobodnom prostoru
 
 ## Optimizacija memorije Arduino programa
 
-Prilikom kompajliranja svog programa, sam IDE će vam reći koliko je velik (npr. PlatformIO). Ako ste dosegli ili prešli raspoloživi prostor, primjena nekih optimizacijskih mehanizama ga može vratiti unutar granica.
+Prilikom kompajliranja svog programa, sam IDE će vam reći koliko je program velik (npr. PlatformIO). Ako ste dosegli ili prešli raspoloživi prostor, primjena nekih optimizacijskih mehanizama ga može vratiti unutar granica.
 
 ### Uklonite nepotrebne (mrtve) dijelove koda
 
@@ -73,7 +73,7 @@ Može se dogoditi da je rezultirajući kod nastao kao kombinacija koda iz više 
 ## Optimizacija SRAM-a
 
 Postoje razni načini na koji možete smanjiti korištenje SRAM memorije. Ovo su samo neki od njih.
-### Eliminirajte nekorištenje varijable
+### Eliminirajte nekorištene varijable
 
 Može se ponekad dogoditi da se neke varijable uopće ne koriste pa ih jednostavno izbrišite.
 
@@ -85,9 +85,9 @@ Ne koristite *float* kada je *int* dovoljan. Nemojte koristiti *int* kada je *by
 
 ### Upotreba lokalnih varijabli
 
-Globalne i statičke varijable se prve učitaju u SRAM te one guraju Heap gore prema Stacku. Ukoliko je moguće, incijaliziraje lokalne varijable unutar funkcija. Naime, prilikom izvršavanja funkcije alocira se dio Stack memorije. Unutar te memorije će biti sadržani:
- - svi parametri koji su dodijeljeni funkciji
- - sve lokalne varijable koje su deklarirane u funkciji
+Globalne i statičke varijable se prve učitaju u SRAM te one guraju Heap gore prema Stacku. Ukoliko je moguće, incijalizirajte lokalne varijable unutar funkcija. Naime, prilikom izvršavanja funkcije alocira se dio Stack memorije. Unutar te memorije će biti sadržani:
+ - svi parametri koji su dodijeljeni funkciji,
+ - sve lokalne varijable koje su deklarirane u funkciji.  
 Ovi se podaci koriste u funkciji te se prilikom izlaska iz funkcije dio memorije Stacka kojeg je funkcija koristila u potpunosti oslobađa!
 
 ### Upotreba PROGMEM za const podatke
