@@ -23,6 +23,7 @@
  Connect a 10K resistor from pin 2 (data) to pin 1 (power) of the sensor
 */
 
+#include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <Wire.h>
 #include <BH1750.h>
@@ -55,7 +56,7 @@ void setup() {
   Serial.println("DHTxx test!");
   dht.begin();
 
-  lightMeter.begin(BH1750_CONTINUOUS_HIGH_RES_MODE);
+  lightMeter.begin(BH1750::CONTINUOUS_HIGH_RES_MODE);
   Serial.println(F("BH1750 Test"));
 
 }
